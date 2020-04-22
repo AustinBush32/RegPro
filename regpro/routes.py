@@ -99,6 +99,12 @@ def instructor():
 def instructorClass(): 
     form = editCourseTime()
     courses = Course.query.all()
+    if form.submit.data:
+        course = Course.query.filter_by(crn=form.crn.data).first()
+        course.days = form.newday.data
+        course.time = form.newtime.data
+        db.session.commit()
+        return redirect(url_for('instructorClass'))
     return render_template('instructorClass.html', page='edit-class', form=form, courses=courses)
 
 @app.route('/advisor')
