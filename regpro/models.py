@@ -31,4 +31,4 @@ class Course(db.Model):
     instructor = db.Column(db.String(100), unique=False, nullable=False)
 
     def __repr__(self):
-        return f"User('{self.crn}' | {self.title}' : '{self.days}' '{self.time}')"
+        return f"Course('{self.crn}' : '{self.title}' : '{self.days}' '{self.time}')"
